@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Iniciar Sesión
+            </div>
+            <div class="card-body">
+                <form  (ngSubmit)="login(f)" #f="ngForm">
+                    <div class="form-group">
+                        <span *ngIf="f.submitted && f.controls['username'].errors"
+                          class="text-danger animated fadeIn">El nombre de usuario es obligatorio</span>
+                        <input type="text"  name="username" class="form-control" placeholder="Username" [(ngModel)]="usuario.username" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <span *ngIf="f.submitted && f.controls['password'].errors"
+                          class="text-danger animated fadeIn">Al menos 6 letras</span>
+                        <input type="password" minlength="6" name="password" class="form-control" placeholder="Password" required [(ngModel)]="usuario.password">
+                    </div>
+                    <button class="btn btn-success btn-block">
+                        Iniciar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

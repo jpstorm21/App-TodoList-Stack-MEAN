@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-9 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        {{ id ? "Editar Tarea" : "Registrar Tarea" }}
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="register(f)" #f="ngForm">
+          <div class="form-group">
+            <span *ngIf="f.submitted && f.controls['name'].errors" class="text-danger animated fadeIn">El nombre de la
+              tarea es obligatorio</span>
+            <input type="text" name="name" class="form-control" placeholder="Nombre de la Tarea" [(ngModel)]="task.name"
+              required autofocus />
+          </div>
+          <div class="form-group">
+            <span *ngIf="f.submitted && f.controls['descripcion'].errors" class="text-danger animated fadeIn">Debe
+              escribir una descripción</span>
+            <textarea type="text" name="descripcion" class="form-control" placeholder="Descripcion...." required
+              [(ngModel)]="task.description"></textarea>
+          </div>
+          <div class="form-check mb-2" *ngIf="id">
+            <input type="checkbox" class="form-check-input" (change)="onChange($event)" [checked]="this.task.state">
+            <label class="form-check-label">¿Esta tarea esta completada?</label>
+          </div>
+          <button class="btn btn-success btn-block">
+            {{ id ? "Guardar Cambios" : "Guardar Tarea" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

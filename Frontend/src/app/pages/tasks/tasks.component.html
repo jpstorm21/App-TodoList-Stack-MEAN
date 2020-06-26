@@ -1,0 +1,14 @@
+<div class="row" *ngIf="tasks?.length > 0">
+  <div class="col-md-4 mb-3"  *ngFor="let task of tasks">
+    <div class="card">
+      <div class="card-body">
+        <a [routerLink]="['/work', task._id]">
+          <h3>{{ task.name }}</h3>
+        </a>
+        <p>{{ task.description }}</p>
+        <p>Estado: {{ task.state ? "Completada" : "En proceso" }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+  
